@@ -1,4 +1,7 @@
-song = """There was an old lady who swallowed a fly.
+import unittest
+import song
+
+original_song = """There was an old lady who swallowed a fly.
 I don't know why she swallowed a fly - perhaps she'll die!
 
 There was an old lady who swallowed a spider;
@@ -39,8 +42,10 @@ I don't know why she swallowed a fly - perhaps she'll die!
 There was an old lady who swallowed a horse...
 ...She's dead, of course!"""
 
-def original_song():
-	return song	
+class TestStringMethods(unittest.TestCase):
+
+    def test_original_song(self):
+        self.assertEqual(original_song, song.original_song())
 
 if __name__ == '__main__':
-	print(original_song())
+    unittest.main()
