@@ -42,11 +42,18 @@ I don't know why she swallowed a fly - perhaps she'll die!
 There was an old lady who swallowed a horse...
 ...She's dead, of course!"""
 
+first_stanza = """There was an old lady who swallowed a fly.
+I don't know why she swallowed a fly - perhaps she'll die!
+
+"""
+
 class TestStringMethods(unittest.TestCase):
 
     def test_original_song(self):
         self.assertEqual(original_song, song.original_song())
 
+    def test_first_stanza(self):
+        self.assertEqual(first_stanza, song.get_first_stanza())   
 
 if __name__ == '__main__':
     unittest.main()
