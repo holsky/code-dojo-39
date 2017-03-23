@@ -59,21 +59,48 @@ She swallowed the spider to catch the fly;
 I don't know why she swallowed a fly - perhaps she'll die!
 """
 
+custom_song = """There was an old lady who swallowed a frog.
+Wait wog?
+
+There was an old lady who swallowed a giraffe;
+Wait baffe?
+She swallowed the giraffe to catch the frog;
+Wait wog?
+
+There was an old lady who swallowed a lion;
+Wait iron?
+She swallowed the lion to catch the giraffe,
+She swallowed the giraffe to catch the frog;
+Wait wog?
+
+There was an old lady who swallowed a norse...
+...She's dead, of course!"""
+
 class TestStringMethods(unittest.TestCase):
 
     def test_original_song(self):
         self.assertEqual(original_song, song.original_song())
 
     def test_first_stanza(self):
-        self.assertEqual(first_stanza, song.build_stanza(0))   
+        self.assertEqual(first_stanza, song._build_stanza(song.original_animals, 0))   
 
     # this one is with the swallow phrase
     def test_second_stanza(self):
-        self.assertEqual(second_stanza, song.build_stanza(1))
+        self.assertEqual(second_stanza, song._build_stanza(song.original_animals, 1))
 
     # this one has a comma in the swallow phrase
     def test_third_stanza(self):
-        self.assertEqual(third_stanza, song.build_stanza(2))
+        self.assertEqual(third_stanza, song._build_stanza(song.original_animals, 2))
+
+    def test_with_different_animals(self):
+        animals = [
+            song.animal("frog", "Wait wog?"),
+            song.animal("giraffe", "Wait baffe?"),
+            song.animal("lion", "Wait iron?")
+        ]
+        closing_animal = "norse"
+        self.assertEqual(custom_song, song.song(animals, closing_animal))
+
 
 if __name__ == '__main__':
     unittest.main()
