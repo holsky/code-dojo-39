@@ -47,16 +47,25 @@ I don't know why she swallowed a fly - perhaps she'll die!
 closing = """There was an old lady who swallowed a {}...
 ...She's dead, of course!"""
 
+def format_animal_phrase(n):
+	return animals[n].phrase.format(animals[n].name)
+
+def format_swallow_phrase(n):
+	return swallow_phrase.format(animals[n].name, animals[n - 1].name)
+
+def format_opening(n):
+	return opening.format(animals[n].name) + ("." if n == 0 else ";")
+
 def get_first_stanza():
-	return opening.format(animals[0].name) + "." + "\n" \
-		+ animals[0].phrase.format(animals[0].name) \
+	return format_opening(0) + "\n" \
+		+ format_animal_phrase(0) \
 		+ "\n\n"
 
 def get_second_stanza():
-	return opening.format(animals[1].name) + ";" + "\n" \
-		+ animals[1].phrase + "\n" \
-		+ swallow_phrase.format(animals[1].name, animals[0].name) + "\n" \
-		+ animals[0].phrase.format(animals[0].name) + "\n" \
+	return format_opening(1) + "\n" \
+		+ format_animal_phrase(1) + "\n" \
+		+ format_swallow_phrase(1) + "\n" \
+		+ format_animal_phrase(0) + "\n" \
 		+ "\n"
 
 def original_song():

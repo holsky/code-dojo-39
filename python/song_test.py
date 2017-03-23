@@ -65,6 +65,5 @@ class TestStringMethods(unittest.TestCase):
     def test_second_stanza(self):
         self.assertEqual(second_stanza, song.get_second_stanza())
 
-
 if __name__ == '__main__':
     unittest.main()
