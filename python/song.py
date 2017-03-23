@@ -56,9 +56,9 @@ def format_swallow_phrase(n):
 def format_opening(n):
 	return opening.format(animals[n].name) + ("." if n == 0 else ";")
 
-def get_first_stanza():
-	return format_opening(0) + "\n" \
-		+ format_animal_phrase(0) \
+def build_stanza(n):
+	return format_opening(n) + "\n" \
+		+ format_animal_phrase(n) \
 		+ "\n\n"
 
 def get_second_stanza():
@@ -69,7 +69,7 @@ def get_second_stanza():
 		+ "\n"
 
 def original_song():
-	return get_first_stanza() \
+	return build_stanza(0) \
 		+ get_second_stanza() \
 		+ stanzas \
 		+ closing.format(closing_animal)
