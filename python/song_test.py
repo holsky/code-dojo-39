@@ -47,6 +47,13 @@ I don't know why she swallowed a fly - perhaps she'll die!
 
 """
 
+second_stanza = """There was an old lady who swallowed a spider;
+That wriggled and wiggled and tickled inside her.
+She swallowed the spider to catch the fly;
+I don't know why she swallowed a fly - perhaps she'll die!
+
+"""
+
 class TestStringMethods(unittest.TestCase):
 
     def test_original_song(self):
@@ -54,6 +61,10 @@ class TestStringMethods(unittest.TestCase):
 
     def test_first_stanza(self):
         self.assertEqual(first_stanza, song.get_first_stanza())   
+
+    def test_second_stanza(self):
+        self.assertEqual(second_stanza, song.get_second_stanza())
+
 
 if __name__ == '__main__':
     unittest.main()

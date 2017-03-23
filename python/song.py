@@ -1,15 +1,18 @@
-animal = ("fly", "I don't know why she swallowed a {0} - perhaps she'll die!")
+import collections
+
+animal = collections.namedtuple('struct', 'name phrase')
+
+animals = [
+	animal("fly", "I don't know why she swallowed a {0} - perhaps she'll die!"),
+	animal("spider", "That wriggled and wiggled and tickled inside her.")
+]
 closing_animal = "horse"
 
-stanza = """There was an old lady who swallowed a {0}.
-I don't know why she swallowed a {0} - perhaps she'll die!"""
+opening = "There was an old lady who swallowed a {0}"
 
-stanzas = """There was an old lady who swallowed a spider;
-That wriggled and wiggled and tickled inside her.
-She swallowed the spider to catch the fly;
-I don't know why she swallowed a fly - perhaps she'll die!
+swallow_phrase = "She swallowed the {0} to catch the {1};"
 
-There was an old lady who swallowed a bird;
+stanzas = """There was an old lady who swallowed a bird;
 How absurd to swallow a bird.
 She swallowed the bird to catch the spider,
 She swallowed the spider to catch the fly;
@@ -45,11 +48,21 @@ closing = """There was an old lady who swallowed a {}...
 ...She's dead, of course!"""
 
 def get_first_stanza():
-	return stanza.format(animal[0]) + "\n\n"
+	return opening.format(animals[0].name) + "." + "\n" \
+		+ animals[0].phrase.format(animals[0].name) \
+		+ "\n\n"
+
+def get_second_stanza():
+	return opening.format(animals[1].name) + ";" + "\n" \
+		+ animals[1].phrase + "\n" \
+		+ swallow_phrase.format(animals[1].name, animals[0].name) + "\n" \
+		+ animals[0].phrase.format(animals[0].name) + "\n" \
+		+ "\n"
 
 def original_song():
 	return get_first_stanza() \
-		+ stanzas.format(animal[0]) \
+		+ get_second_stanza() \
+		+ stanzas \
 		+ closing.format(closing_animal)
 
 if __name__ == '__main__':
