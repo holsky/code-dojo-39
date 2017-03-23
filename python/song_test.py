@@ -44,14 +44,12 @@ There was an old lady who swallowed a horse...
 
 first_stanza = """There was an old lady who swallowed a fly.
 I don't know why she swallowed a fly - perhaps she'll die!
-
 """
 
 second_stanza = """There was an old lady who swallowed a spider;
 That wriggled and wiggled and tickled inside her.
 She swallowed the spider to catch the fly;
 I don't know why she swallowed a fly - perhaps she'll die!
-
 """
 
 class TestStringMethods(unittest.TestCase):
@@ -60,10 +58,10 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(original_song, song.original_song())
 
     def test_first_stanza(self):
-        self.assertEqual(first_stanza, song.get_first_stanza())   
+        self.assertEqual(first_stanza, song.build_stanza(0))   
 
     def test_second_stanza(self):
-        self.assertEqual(second_stanza, song.get_second_stanza())
+        self.assertEqual(second_stanza, song.build_stanza(1))
 
 if __name__ == '__main__':
     unittest.main()

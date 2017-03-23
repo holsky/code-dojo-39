@@ -57,20 +57,18 @@ def format_opening(n):
 	return opening.format(animals[n].name) + ("." if n == 0 else ";")
 
 def build_stanza(n):
-	return format_opening(n) + "\n" \
-		+ format_animal_phrase(n) \
-		+ "\n\n"
+	stanza = format_opening(n) + "\n" \
+		+ format_animal_phrase(n) + "\n"
+	for i in range(n, 0, -1):
+		stanza += format_swallow_phrase(i) + "\n"
+	if n > 0:
+		stanza += format_animal_phrase(0) + "\n"
 
-def get_second_stanza():
-	return format_opening(1) + "\n" \
-		+ format_animal_phrase(1) + "\n" \
-		+ format_swallow_phrase(1) + "\n" \
-		+ format_animal_phrase(0) + "\n" \
-		+ "\n"
+	return stanza
 
 def original_song():
-	return build_stanza(0) \
-		+ get_second_stanza() \
+	return build_stanza(0) + "\n" \
+		+ build_stanza(1) + "\n" \
 		+ stanzas \
 		+ closing.format(closing_animal)
 
