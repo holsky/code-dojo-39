@@ -1,14 +1,10 @@
 song_animal = "fly"
 closing_animal = "horse"
 
-
-
-opening = """There was an old lady who swallowed a {0}.
+stanzas = """There was an old lady who swallowed a {0}.
 I don't know why she swallowed a {0} - perhaps she'll die!
 
-"""
-
-stanzas = """There was an old lady who swallowed a spider;
+There was an old lady who swallowed a spider;
 That wriggled and wiggled and tickled inside her.
 She swallowed the spider to catch the {0};
 I don't know why she swallowed a {0} - perhaps she'll die!
@@ -49,8 +45,7 @@ closing = """There was an old lady who swallowed a {}...
 ...She's dead, of course!"""
 
 def original_song():
-	return opening.format(song_animal) \
-		+ stanzas.format(song_animal) \
+	return stanzas.format(song_animal) \
 		+ closing.format(closing_animal)
 
 if __name__ == '__main__':
