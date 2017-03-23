@@ -52,6 +52,13 @@ She swallowed the spider to catch the fly;
 I don't know why she swallowed a fly - perhaps she'll die!
 """
 
+third_stanza = """There was an old lady who swallowed a bird;
+How absurd to swallow a bird.
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly;
+I don't know why she swallowed a fly - perhaps she'll die!
+"""
+
 class TestStringMethods(unittest.TestCase):
 
     def test_original_song(self):
@@ -60,8 +67,13 @@ class TestStringMethods(unittest.TestCase):
     def test_first_stanza(self):
         self.assertEqual(first_stanza, song.build_stanza(0))   
 
+    # this one is with the swallow phrase
     def test_second_stanza(self):
         self.assertEqual(second_stanza, song.build_stanza(1))
+
+    # this one has a comma in the swallow phrase
+    def test_third_stanza(self):
+        self.assertEqual(third_stanza, song.build_stanza(2))
 
 if __name__ == '__main__':
     unittest.main()
