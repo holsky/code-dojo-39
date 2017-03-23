@@ -47,5 +47,6 @@ class TestStringMethods(unittest.TestCase):
     def test_original_song(self):
         self.assertEqual(original_song, song.original_song())
 
+
 if __name__ == '__main__':
     unittest.main()
